@@ -13,16 +13,7 @@ public class Airplane
 
     int counter = 0;
 
-    void showSeatingStatus()
-    {
-        for(int i = 0; i < 10; i++)
-        {
-            out.println(collectiveSeats[i].getSeatTaken());
-        }
-        out.println();
-        out.println();
-    }
-
+    // Sets a value and instantiates each seat
     void ConstructSeats()
     {
         for(int i = 0; i < 10; i++)
@@ -32,17 +23,40 @@ public class Airplane
         }
     }
 
-    boolean isMaxCapacity()
+    // Shows all seats and their current seating status
+    void showCollectiveSeatStatus()
     {
-
         for(int i = 0; i < 10; i++)
         {
-            collectiveSeats[i].getSeatTaken();
-
-            if(collectiveSeats[i].getSeatTaken() == false)
-                maxCapacity = false;
-
+            out.println(collectiveSeats[i].getSeatTaken());
         }
+        out.println();
+        out.println();
+    }
+
+    // Checks each seat and returns wheter or not the plane is full
+    boolean isPlaneCapacityFull()
+    {
+        int fullseatCounter = 0;
+        int seatsCounted = 0;
+
+        while(seatsCounted < 10 && maxCapacity == true)
+        {
+            collectiveSeats[seatsCounted].getSeatTaken();
+
+            // If atleast one seat returns true
+            // then the plane is not full
+            // else if all seats return true then the plane is full
+
+            if(collectiveSeats[i].getSeatTaken() == true)
+                fullseatCounter += 1;
+
+            seatsCounted++;
+        }
+            if(fullseatCounter == 10)
+                maxCapacity = true;
+            else
+                maxCapacity = false;
 
         return maxCapacity;
     }
@@ -67,7 +81,7 @@ public class Airplane
                         counter = 5;
                     }
                         // if the seat is taken go to the next seat
-                    showSeatingStatus();
+                    showCollectiveSeatStatus();
                 }
             }
             else if(section == 2)
@@ -82,7 +96,7 @@ public class Airplane
                         counter = 5;
                     }
                     // if the seat is taken go to the next seat
-                    showSeatingStatus();
+                    showCollectiveSeatStatus();
                 }
             }
             else
