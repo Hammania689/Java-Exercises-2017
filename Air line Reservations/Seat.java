@@ -1,10 +1,11 @@
 /**
  * Created by hameed on 4/6/2017.
  */
-public class Seats
+public class Seat
 {
     private boolean seatTaken = false;
     private String airClass = "";
+    private String ownerName = "";
 
     void setAirClass(int seatPosition)
     {
@@ -22,10 +23,17 @@ public class Seats
             seatTaken = false;
     }
 
+    void setOwnerName(String name)
+    {
+        ownerName = name;
+    }
+
+
     String getAirClass()
     {
         return  airClass;
     }
+    String getOwnerName(){ return  ownerName;}
     boolean getSeatTaken()
     {
         return  seatTaken;
